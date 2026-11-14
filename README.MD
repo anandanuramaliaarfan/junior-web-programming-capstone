@@ -4,8 +4,8 @@ Ruang Produktif merupakan aplikasi web sederhana untuk membantu pengguna mengelo
 
 ## Preview
 
-### Wireframe Design
-![Wireframe Dashboard](assets/ui design-dashboard.png)
+### UI design Design
+![uidesign Dashboard](assets/uidesign-dashboard.png)
 
 ### Application Dashboard
 ![Dashboard Preview](assets/dashboard-preview.png)
