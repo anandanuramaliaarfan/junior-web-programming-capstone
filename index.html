@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruang Produktif - Productivity Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h4 class="brand">Ruang Produktif</h4>
+
+        <nav class="sidebar-menu">
+          <a href="#" class="menu-item active">Dashboard</a>
+          <a href="#" class="menu-item">Semua Tugas</a>
+          <a href="#" class="menu-item">Tugas Selesai</a>
+        </nav>
+
+        <div class="profile">
+          <p>Pengguna</p>
+          <small>Personal Workspace</small>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Kelola aktivitas dan capai target harianmu.</p>
+          </div>
+
+          <span id="currentDate"></span>
+        </header>
+
+        <!-- Summary Cards -->
+        <section class="summary-section">
+          <div class="summary-card">
+            <p>Total Tugas</p>
+            <h2 id="totalTasks">0</h2>
+          </div>
+
+          <div class="summary-card">
+            <p>Tugas Selesai</p>
+            <h2 id="completedTasks">0</h2>
+          </div>
+
+          <div class="summary-card">
+            <p>Tugas Tertunda</p>
+            <h2 id="pendingTasks">0</h2>
+          </div>
+        </section>
+
+        <!-- Task Management -->
+        <section class="task-section">
+          <div class="section-header">
+            <h2>Daftar Tugas</h2>
+            <button id="addTaskBtn" class="btn btn-dark">
+              + Tambah Tugas
+            </button>
+          </div>
+
+          <div class="filter-section">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Cari tugas..."
+            />
+
+            <select id="categoryFilter" class="form-select">
+              <option value="all">Semua Kategori</option>
+              <option value="Pekerjaan">Pekerjaan</option>
+              <option value="Belajar">Belajar</option>
+              <option value="Pribadi">Pribadi</option>
+            </select>
+
+            <select id="statusFilter" class="form-select">
+              <option value="all">Semua Status</option>
+              <option value="pending">Belum Selesai</option>
+              <option value="completed">Selesai</option>
+            </select>
+          </div>
+
+          <div id="taskList" class="task-list">
+            <!-- Task items akan ditampilkan melalui JavaScript -->
+          </div>
+        </section>
+
+        <!-- Productivity Chart -->
+        <section class="chart-section">
+          <h2>Produktivitas Mingguan</h2>
+          <canvas id="productivityChart"></canvas>
+        </section>
+      </main>
+    </div>
+
+    <!-- Add/Edit Task Modal -->
+    <div class="modal fade" id="taskModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Tambah Tugas</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form id="taskForm">
+              <input type="hidden" id="taskId" />
+
+              <div class="mb-3">
+                <label for="taskTitle" class="form-label">Nama Tugas</label>
+                <input
+                  type="text"
+                  id="taskTitle"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="taskDescription" class="form-label">
+                  Deskripsi
+                </label>
+                <textarea
+                  id="taskDescription"
+                  class="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="taskCategory" class="form-label">Kategori</label>
+                <select id="taskCategory" class="form-select" required>
+                  <option value="">Pilih Kategori</option>
+                  <option value="Pekerjaan">Pekerjaan</option>
+                  <option value="Belajar">Belajar</option>
+                  <option value="Pribadi">Pribadi</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="taskDate" class="form-label">Tanggal Tenggat</label>
+                <input
+                  type="date"
+                  id="taskDate"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-dark w-100">
+                Simpan Tugas
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
